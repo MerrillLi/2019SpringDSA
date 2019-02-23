@@ -1,0 +1,10 @@
+//
+// Created by јиоЏкЌ on 2019-02-18.
+//
+
+#ifndef INC_2019SPRINGDSA_ARRAYDEQUE_H
+#define INC_2019SPRINGDSA_ARRAYDEQUE_H
+
+
+
+#endif //INC_2019SPRINGDSA_ARRAYDEQUE_H
