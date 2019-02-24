@@ -5,6 +5,7 @@
 #include "DualCycleLinkedList/DualCycleLinkedList.h"
 #include "RBTree/RBTree.h"
 #include "Vector/Vector.h"
+#include "Queue/Queue.h"
 #include <time.h>
 
 
@@ -18,6 +19,7 @@ int main() {
 
     srand((unsigned int)time(NULL));
     int array[1000000] = {0};
+
     for (int j = 0; j < 1000000; ++j) {
         array[j] = rand();
     }
@@ -101,13 +103,28 @@ int main() {
 
     }
 
+    time_t end5 = time(NULL);
+    //Queue²âÊÔ
+    for (int l = 0; l < 2; ++l) {
+        Queue queue = InitQueue();
+
+        for (int i = 0; i < 30; ++i) {
+            EnQueue(queue,array[i]);
+            assert(DeQueue(queue) == array[i]);
+            assert(QueueSize(queue) == 0);
+        }
+
+    }
+
+
     time_t final = time(NULL);
 
     printf("HashMap = %d\n",end1 - start1);
     printf("RedBlackTree = %d\n",end2 - end1);
     printf("AVLTree = %d\n",end3 - end2);
     printf("DualCycleLinkedList = %d\n",end4 - end3);
-    printf("Vector = %d\n",final - end4);
+    printf("Vector = %d\n",end5 - end4);
+    printf("Queue = %d\n",final - end5);
 
 
     return 0;

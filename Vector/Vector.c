@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include "stdbool.h"
+#include <stdio.h>
 
 Vector InitVector(int capacity)
 {
