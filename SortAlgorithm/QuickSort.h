@@ -1,0 +1,8 @@
+//
+// Created by јиоЏкЌ on 2019-02-25.
+//
+
+#ifndef INC_2019SPRINGDSA_QUICKSORT_H
+#define INC_2019SPRINGDSA_QUICKSORT_H
+
+#endif //INC_2019SPRINGDSA_QUICKSORT_H
