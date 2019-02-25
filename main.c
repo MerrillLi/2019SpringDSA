@@ -5,7 +5,7 @@
 #include "DualCycleLinkedList/DualCycleLinkedList.h"
 #include "RBTree/RBTree.h"
 #include "Vector/Vector.h"
-#include "Queue/Queue.h"
+#include "Queue/ArrayBaseQueue/Queue.h"
 #include <time.h>
 
 
