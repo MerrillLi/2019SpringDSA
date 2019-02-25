@@ -7,28 +7,14 @@
 #include "Tree/RBTree/RBTree.h"
 #include "Tree/AVLTree/AVLTree.h"
 #include "SortAlgorithm/MergeSort.h"
+#include "SortAlgorithm/SelectionSort.h"
 #include <time.h>
 
-
-int HashIndex(void* obj)
-{
-
-    return abs((int)(obj)%101);
-}
 
 int main() {
 
     srand((unsigned int)time(NULL));
-    int array[1000000] = {0};
 
-    for (int j = 0; j < 100; ++j) {
-        array[j] = rand() % 100;
-    }
-
-    merge_sort(array, 100);
-    for (int m = 0; m < 100; ++m) {
-        printf("%d ",array[m]);
-    }
 //
 //    //Hash²âËÙ
 //    time_t start1 = time(NULL);
