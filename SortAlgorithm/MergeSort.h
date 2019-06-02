@@ -5,7 +5,6 @@
 #ifndef INC_2019SPRINGDSA_SORT_H
 #define INC_2019SPRINGDSA_SORT_H
 
-#include <stdlib.h>
 
 void merge_sort(int *arr, int size);
 

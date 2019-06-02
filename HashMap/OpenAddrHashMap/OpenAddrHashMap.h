@@ -6,6 +6,8 @@
 #define INC_2019SPRINGDSA_OPENADDRHASHMAP_H
 
 #include <stdlib.h>
+#include <stdbool.h>
+
 #define KeyType int
 #define ValueType int
 
@@ -25,7 +27,6 @@ typedef struct __OAHashMap
     int capacity;
     int size;
 }*OAHashMap;
-
 
 
 int hashIndex(int key, int capacity)
@@ -70,6 +71,23 @@ ValueType OAHashMapRemove(OAHashMap hashMap, KeyType key)
     hashMap->data[index].tag = EMPTY;
     return val;
 }
+
+bool OAHashMapContains(OAHashMap hashMap,KeyType key)
+{
+    int index = hashIndex(key,hashMap->capacity);
+    //记录结束点
+    int start = index;
+    //处理区间 [start , capacity - 1] && [0 , start - 1]
+    while(hashMap->data[index++ % hashMap->capacity ].key != key )
+    {
+        if(hashMap->data[index++ % hashMap->capacity ].key == key)
+        if(index == start + hashMap->capacity) return false;
+        if(index == hashMap->capacity - 1) index = 0;
+    }
+    return false;
+}
+
+
 
 
 

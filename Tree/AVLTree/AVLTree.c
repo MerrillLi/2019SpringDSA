@@ -4,7 +4,8 @@
 
 #include "AVLTree.h"
 #include <stdlib.h>
-#include <stdbool.h>
+
+
 
 #define max(a,b) ((a>b?a:b))
 #define min(a,b) ((a>b?b:a))
@@ -137,13 +138,7 @@ AVLTreeNode* add(const AVLTree tree,AVLTreeNode* node,KeyType key,ValueType valu
         return leftRotate(node);
     }
 
-
-
-
-
     return node;
-
-
 }
 
 //向树中添加Key-Value对
@@ -280,9 +275,6 @@ AVLTreeNode* remove(const AVLTree tree,AVLTreeNode* node,KeyType key)
     }
 
     return retNode;
-
-
-
 
 }
 

@@ -13,6 +13,7 @@ SinglyLinkedList InitLinkedList()
     SinglyLinkedList linkedList = (SinglyLinkedList)malloc(sizeof(struct __SinglyLinkedList));
     linkedList->size = 0;
     linkedList->head = (SinglyNode)malloc(sizeof(struct __SinglyNode));
+    linkedList->head->next = NULL;
     return linkedList;
 }
 
@@ -36,8 +37,8 @@ void LinkedListInsert(SinglyLinkedList linkedList,ElementType element)
 {
     //ͷ�巨
     SinglyNode newNode = internalCreateSingleNode(element);
-    newNode->next = linkedList->head;
-    linkedList->head = newNode;
+    newNode->next = linkedList->head->next;
+    linkedList->head->next = newNode;
     linkedList->size ++;
 }
 

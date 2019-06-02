@@ -5,11 +5,13 @@
 #ifndef INC_2019SPRINGDSA_AVLTREE_H
 #define INC_2019SPRINGDSA_AVLTREE_H
 
-#include <stdbool.h>
 
 #define KeyType int
 #define ValueType int
 
+#define bool int
+#define true 1
+#define false 0
 
 typedef struct AVLTreeNode
 {

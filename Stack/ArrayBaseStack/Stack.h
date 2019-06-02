@@ -12,7 +12,6 @@
 typedef struct __Stack
 {
     ElementType* arr;
-    int size;
     int top;
     int capacity;
 }*Stack;
@@ -22,7 +21,6 @@ Stack InitStack()
 {
     Stack stack = (Stack)malloc(sizeof(struct __Stack));
     stack->arr = (ElementType*)malloc(sizeof(ElementType) * DEFAULTSIZE);
-    stack->size = 0;
     stack->top = -1;
     stack->capacity = DEFAULTSIZE;
     return stack;
@@ -31,17 +29,17 @@ Stack InitStack()
 //添加进栈
 void StackPush(Stack s, ElementType element)
 {
-    if(s->size == s->capacity)
+    if(s->top + 1 == s->capacity)
     {
         ElementType* newarr = (ElementType*)malloc(sizeof(ElementType) * 2 * s->capacity);
-        for (int i = 0; i < s->size; ++i) {
+        for (int i = 0; i < s->top + 1; ++i) {
             newarr[i] = s->arr[i];
         }
         s->arr = newarr;
         s->capacity *= 2;
     }
     s->arr[++ s->top] = element;
-    s->size ++;
+
 }
 
 //弹出顶端元素

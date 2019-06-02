@@ -2,12 +2,8 @@
 // Created by 黎钰晖 on 2019-02-25.
 //
 #include "MergeSort.h"
-void swap(int *a, int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
+#include "swap.h"
+#include <stdlib.h>
 
 //将长度为n的数组逆序
 void reverse(int *arr, int n)

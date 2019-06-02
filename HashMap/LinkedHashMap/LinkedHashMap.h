@@ -85,7 +85,7 @@ void HashMapPut(LinkedHashMap map,KeyType key,ValueType value)
         map->table[index] = createEntry(index,key,value);
         map->size++;
     }
-    //如果hash值已经存在了，//todo::则找到最末尾，添加进Entry中
+    //如果hash值已经存在了
     else
     {
         Entry* entry = map->table[index];
