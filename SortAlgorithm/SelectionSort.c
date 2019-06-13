@@ -4,7 +4,7 @@
 
 #include "SelectionSort.h"
 
-void InsertionSort(int arr[], int size) {
+void SelectionSort(int arr[], int size) {
     //从数组的最后开始，升序排列
     int index = size - 1;
     //保证对每一个元素都进行了操作

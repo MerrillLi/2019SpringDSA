@@ -65,4 +65,9 @@ int StrLength(string str)
 }
 
 
+int KMP(char* string,char* pattern){
+    
+}
+
+
 #endif //INC_2019SPRINGDSA_STRING_H

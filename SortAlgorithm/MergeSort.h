@@ -6,9 +6,8 @@
 #define INC_2019SPRINGDSA_SORT_H
 
 
-void merge_sort(int *arr, int size);
+void MergeSort(int *arr, int size);
 
-void inplace_mergesort(int* arr,int size);
 
 
 

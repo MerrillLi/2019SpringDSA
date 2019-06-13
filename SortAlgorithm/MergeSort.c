@@ -1,102 +1,46 @@
 //
-// Created by 黎钰晖 on 2019-02-25.
+// Created by 黎钰晖 on 2019-06-02.
 //
+
 #include "MergeSort.h"
 #include "swap.h"
 #include <stdlib.h>
+#include <memory.h>
 
-//将长度为n的数组逆序
-void reverse(int *arr, int n)
-{
-    int i = 0,j = n - 1;
-    while(i < j)
-    {
-        swap(&arr[i], &arr[j]);
-        i ++;
-        j --;
-    }
-}
+void merge_sort(int *arr, int start, int end) {
 
-//将数组向左循环移位i个位置
-void exchange(int *arr, int n, int i)
-{
-    reverse(arr, i);
-    reverse(arr + i, n - i);
-    reverse(arr, n);
-}
-
-//原地合并两个数组
-void inplace_Merge(int* arr, int l, int mid, int r)
-{
-    int i = l, j = mid, k = r;
-    // J in [l,r], j = (l + r) / 2, j closer to r, it can be equal to r
-    while(i < j && j <= r)
-    {
-        int step = 0;
-        while(i < j && arr[i] <= arr[j])
-            ++ i;
-        while(j <= k && arr[j] <= arr[i])
-        {
-            ++ j;
-            ++ step;
-        }
-        exchange(arr + i, j - i, j - i - step);
-        i = i + step;
-    }
-}
-
-//原地归并排序指定区间
-void inplace_MergeSortSection(int* arr,int l,int r)
-{
-    if(l >= r) return;
-    int mid = (l + r) / 2;
-    inplace_MergeSortSection(arr, l, mid);
-    inplace_MergeSortSection(arr, mid + 1, r);
-    inplace_Merge(arr, l, mid + 1, r);
-}
-
-//原地归并排序算法
-void inplace_mergesort(int* arr,int size)
-{
-    inplace_MergeSortSection(arr, 0, size - 1);
-}
-
-//额外空间的合并算法
-void extraspace_merge(int *arr,int l, int mid, int r)
-{
-    //[l,r]区间上的归并
-    //分为[l,mid]&[mid+1,r]
-    int leftIndex = l;
-    int rightIndex = mid + 1;
-    int arrIndex = 0;
-    int* newarr = (int*)malloc(sizeof(int) * (r - l + 1));
-    while(leftIndex <= mid && rightIndex <= r)
-    {
-        newarr[arrIndex++] = arr[leftIndex] < arr[rightIndex] ? arr[leftIndex++] : arr[rightIndex++];
+    //递归终止条件
+    //如果区间只有一个元素，则本身就有序
+    if (start == end)
+        return;
+        //如果区间有两个元素，则看情况交换两个数
+    else if (start - end == 1) {
+        if (arr[start] > arr[end])
+            swap(&arr[start], &arr[end]);
+        return;
     }
 
-    while(leftIndex <= mid)
-        newarr[arrIndex++] = arr[leftIndex++];
-    while(rightIndex <= r)
-        newarr[arrIndex++] = arr[rightIndex++];
+    //递归部分
+    int mid = (start + end) / 2;
+    merge_sort(arr, start, mid);
+    merge_sort(arr, mid + 1, end);
 
-    for (int i = l, t = 0; i <=r ; ++i, ++t) {
-        arr[i] = newarr[t];
-    }
+    //结束上面的递归后，出现了两个有序的数组
+    //分别是[start,mid],[mid + 1,end]
+    int *temp = (int *) malloc(sizeof(int) * (end - start + 1));
+    int mergeIndex = 0, leftIndex = start, rightIndex = mid + 1;
+    while (leftIndex <= mid && rightIndex <= end)
+        temp[mergeIndex++] = arr[leftIndex] < arr[rightIndex] ? arr[leftIndex++] : arr[rightIndex++];
+    while (leftIndex <= mid)
+        temp[mergeIndex++] = arr[leftIndex++];
+    while (rightIndex <= end)
+        temp[mergeIndex++] = arr[rightIndex++];
 
+    //复制归并的数组到原始的数组当中
+    memcpy(&arr[start],temp,sizeof(int) * (end - start + 1));
 }
 
-//额外空间的区间归并排序算法
-void mergesort_section(int* arr, int l, int r)
-{
-    if( l >= r) return;
-    int mid = (l + r) / 2;
-    mergesort_section(arr, l, mid);
-    mergesort_section(arr, mid + 1, r);
-    extraspace_merge(arr, l, mid, r);
-}
 
-//额外空间的归并排序算法
-void merge_sort(int *arr, int size) {
-    mergesort_section(arr, 0, size - 1);
+void MergeSort(int *arr, int size) {
+    merge_sort(arr, 0, size - 1);
 }
