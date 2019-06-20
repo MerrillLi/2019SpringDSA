@@ -5,6 +5,11 @@
 #include "GraphAlgorithm.h"
 #include "ALGraph.h"
 
+//DEBUG控制宏定义
+//#define DEBUG
+
+
+
 /*
  * 克鲁斯卡尔算法
  */
@@ -46,13 +51,14 @@ void kruskal(MatGraph graph) {
 
     //排序边的集合
     qsort(edges, edgeCount, sizeof(Edge), edge_cmp);
-
+#ifdef DEBUG
     for (int k = 0; k < edge_index; ++k) {
         Edge *edge = &edges[k];
         printf("生成的边:%d<-->%d, 权重:%d\n", edge->begin + 1, edge->end + 1, edge->weight);
 
     }
     printf("------------------------\n");
+#endif
     //生成树算法
     for (int i = 0; i < edge_index; ++i) {
         Edge *edge = &edges[i];
@@ -106,7 +112,6 @@ void DFS(ALGraph graph, int vertex) {
 }
 
 
-
 void BFS(ALGraph graph, int vertex){
 
     //初始化访问数组
@@ -142,5 +147,9 @@ void BFS(ALGraph graph, int vertex){
             list = list->nextadj;
         }
     }
+
+}
+
+void toposort_algraph(ALGraph graph){
 
 }
