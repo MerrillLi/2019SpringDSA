@@ -7,36 +7,35 @@
 
 #include <stdlib.h>
 #include <memory.h>
-typedef struct Vertex{
 
-}*Vertex;
-typedef struct MatGraph{
-    Vertex* verts;
-    int** mat;
-    int row;
-    int col;
-}*MatGraph;
+#define VertexType int
+typedef struct Vertex {
+    VertexType data;
+} *Vertex;
 
-MatGraph init_matgraph(int vertexNum){
-    MatGraph graph = (MatGraph)malloc(sizeof(struct MatGraph));
-    graph->verts = (Vertex*)malloc(sizeof(struct Vertex) * vertexNum);
-    graph->mat = (int**)malloc(sizeof(int*) * vertexNum);
-    for (int i = 0; i < vertexNum; ++i) {
-        graph->mat[i] = (int*)malloc(sizeof(int) * vertexNum);
-        memset(graph->mat[i],0, sizeof(int) * vertexNum);
-    }
-    return graph;
-}
+typedef struct MatGraph {
+    Vertex *verts;
+    int **mat;
+    int vertexNum;
+    int edgeNum;
+} *MatGraph;
+
+MatGraph init_matgraph(int vertexNum);
 
 //检查出度
-int first_adj(int vertex){
+int outdegree(MatGraph graph, int vertex);
 
-}
-//检查出度
-int next_adj(int vertex, int last){
+//检查入度
+int indegree(MatGraph graph, int vertex);
 
-}
+//第一个邻接点
+int firstadj(MatGraph graph, int vertex);
 
+//下一个邻接点
+int nextadj(MatGraph graph,int vertex,int last);
+
+//添加边
+void add_nodirect_edge(MatGraph graph,int begin,int end,int weight);
 
 
 #endif //INC_2019SPRINGDSA_ARRAYGRAPH_H
