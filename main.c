@@ -9,26 +9,38 @@
 #include "Graph/GraphAlgorithm.h"
 #include "Graph/ArrayGraph.h"
 #include "Graph/ALGraph.h"
+#include "Review/Chapter4/kmp.h"
 
 
-int main() {
-    ALGraph graph = init_algraph(10);
-    add_edge_algraph(graph,1,2,6);
-    add_edge_algraph(graph,1,3,4);
-    add_edge_algraph(graph,1,4,4);
-    add_edge_algraph(graph,2,3,5);
-    add_edge_algraph(graph,2,5,7);
-    add_edge_algraph(graph,3,4,2);
-    add_edge_algraph(graph,3,6,6);
-    add_edge_algraph(graph,3,7,3);
-    add_edge_algraph(graph,4,7,4);
-    add_edge_algraph(graph,5,6,7);
-    add_edge_algraph(graph,5,8,9);
-    add_edge_algraph(graph,5,9,8);
-    add_edge_algraph(graph,6,7,2);
-    add_edge_algraph(graph,7,8,3);
-    add_edge_algraph(graph,8,9,5);
-    BFS(graph,1);
+//int main() {
+////    ALGraph graph = init_algraph(10);
+////    add_edge_algraph(graph,1,2,6);
+////    add_edge_algraph(graph,1,3,4);
+////    add_edge_algraph(graph,1,4,4);
+////    add_edge_algraph(graph,2,3,5);
+////    add_edge_algraph(graph,2,5,7);
+////    add_edge_algraph(graph,3,4,2);
+////    add_edge_algraph(graph,3,6,6);
+////    add_edge_algraph(graph,3,7,3);
+////    add_edge_algraph(graph,4,7,4);
+////    add_edge_algraph(graph,5,6,7);
+////    add_edge_algraph(graph,5,8,9);
+////    add_edge_algraph(graph,5,9,8);
+////    add_edge_algraph(graph,6,7,2);
+////    add_edge_algraph(graph,7,8,3);
+////    add_edge_algraph(graph,8,9,5);
+////    BFS(graph,1);
+//
+//
+//}
 
+int main(){
+    char* pattern = "abcabaa";
+    int *next = (int*)malloc(sizeof(int) * strlen(pattern));
+    memset(next,0,sizeof(int) * strlen(pattern));
+    makeNext(pattern,next);
 
+    for (int i = 0; i < strlen(pattern); ++i) {
+        printf("%d  ",next[i]);
+    }
 }
