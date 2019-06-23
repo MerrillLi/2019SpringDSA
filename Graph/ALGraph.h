@@ -18,6 +18,7 @@ typedef struct ALLink {
 typedef struct ALVertex {
     VertexType data;
     int outdegree;
+    int indegree;
     ALLink *nextadj;
 } ALVertex;
 

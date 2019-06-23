@@ -63,7 +63,7 @@ bool DualCycListContains(DualCycLinkedList list, ElementType element)
 
     while(current != list->head)
     {
-        if(current->data = element)
+        if(current->data == element)
         {
             return true;
         }

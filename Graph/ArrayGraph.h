@@ -22,6 +22,9 @@ typedef struct MatGraph {
 
 MatGraph init_matgraph(int vertexNum);
 
+void add_direct_edge(MatGraph graph, int begin, int end, int weight);
+
+
 //¼ì²é³ö¶È
 int outdegree(MatGraph graph, int vertex);
 

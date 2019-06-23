@@ -2,12 +2,19 @@
 // Created by ÀèîÚêÍ on 2019-06-04.
 //
 #include "ArrayGraph.h"
-
+#include <stdint.h>
+#include <stdio.h>
 void add_nodirect_edge(MatGraph graph, int begin, int end, int weight) {
-    graph->mat[begin - 1][end - 1] = weight;
-    graph->mat[end - 1][begin - 1] = weight;
+    graph->mat[begin][end] = weight;
+    graph->mat[end][begin] = weight;
     graph->edgeNum++;
 
+}
+
+
+void add_direct_edge(MatGraph graph, int begin, int end, int weight) {
+    graph->mat[begin][end] = weight;
+    graph->edgeNum++;
 }
 
 int nextadj(MatGraph graph, int vertex, int last) {
@@ -61,7 +68,10 @@ MatGraph init_matgraph(int vertexNum) {
     graph->mat = (int **) malloc(sizeof(int *) * vertexNum);
     for (int i = 0; i < vertexNum; ++i) {
         graph->mat[i] = (int *) malloc(sizeof(int) * vertexNum);
-        memset(graph->mat[i], 0, sizeof(int) * vertexNum);
+        for (int j = 0; j < graph->vertexNum; ++j) {
+            graph->mat[i][j] = INT32_MAX;
+        }
     }
+
     return graph;
 }

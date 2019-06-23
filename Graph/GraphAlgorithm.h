@@ -21,4 +21,8 @@ void DFS(ALGraph graph,int vertex);
 
 void BFS(ALGraph graph, int vertex);
 
+void toposort_algraph(ALGraph graph);
+
+void dijkstra(MatGraph graph, int src);
+
 #endif //INC_2019SPRINGDSA_GRAPHALGORITHM_H

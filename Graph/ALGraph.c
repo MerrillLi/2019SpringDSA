@@ -6,8 +6,8 @@
 
 ALGraph init_algraph(int vertexNum) {
 
-    ALGraph graph = (ALGraph)malloc(sizeof(struct ALGraph));
-    graph->vertexs = (ALVertex*)malloc(sizeof(ALVertex) * vertexNum);
+    ALGraph graph = (ALGraph) malloc(sizeof(struct ALGraph));
+    graph->vertexs = (ALVertex *) malloc(sizeof(ALVertex) * vertexNum);
     for (int i = 0; i < vertexNum; ++i) {
         graph->vertexs[i].data = 0;
         graph->vertexs[i].outdegree = 0;
@@ -21,7 +21,7 @@ ALGraph init_algraph(int vertexNum) {
 void add_edge_algraph(ALGraph graph, int start, int end, int weight) {
 
     //初始化节点
-    ALLink *link = (ALLink *) malloc(sizeof(ALLink));
+    ALLink* link = (ALLink*)malloc(sizeof(ALLink));
     link->vertex = end;
     link->weight = weight;
 
@@ -32,6 +32,7 @@ void add_edge_algraph(ALGraph graph, int start, int end, int weight) {
     //更新图的信息
     graph->edge++;
     graph->vertexs[start].outdegree++;
+    graph->vertexs[end].indegree++;
 }
 
 ALVertex *al_firstadj(ALGraph graph, int vertex) {
@@ -48,7 +49,7 @@ ALVertex *al_nextadj(ALGraph graph, int vertex, ALVertex *last) {
         linklist = linklist->nextadj;
     }
     //如果上次的节点存在下一个节点的话，就返回
-    if(linklist->nextadj != NULL)
+    if (linklist->nextadj != NULL)
         return &graph->vertexs[linklist->nextadj->vertex];
     return NULL;
 }
