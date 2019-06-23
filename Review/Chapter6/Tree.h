@@ -201,7 +201,7 @@ void preorder_thread_tarverse(Tree t){
             p = p->left;
         }
 
-//      //无左则后
+        //无左则后
         while (p->rightThread == 1 && p->right != NULL){
             p = p->right;
             printf("当前访问%d",p->data);
